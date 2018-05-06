@@ -83,7 +83,7 @@ connection.query('SELECT * FROM Products', function(err, res){
         });
 
       } else{
-        console.log("Sorry, out of stock");
+        console.log("Insufficient  quantity!");
       }
 
       reprompt();
