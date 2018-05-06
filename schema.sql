@@ -1,6 +1,7 @@
-CREATE DATABASE Bamazon;
+DROP DATABASE IF EXISTS Bamazon_db;
+CREATE DATABASE Bamazon_db;
 
-USE Bamazon;
+USE Bamazon_db;
 
 CREATE TABLE Products(
     ItemID MEDIUMINT AUTO_INCREMENT NOT NULL,
@@ -30,7 +31,8 @@ CREATE TABLE Departments(
     DepartmentName VARCHAR(50) NOT NULL,
     OverHeadCosts DECIMAL(10,2) NOT NULL,
     TotalSales DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY(DepartmentID));
+    PRIMARY KEY(DepartmentID)
+    );
 
 INSERT INTO Departments(DepartmentName, OverHeadCosts, TotalSales)
 VALUES ('ENTERTAINMENT', 50000.00, 15000.00),

@@ -1,7 +1,7 @@
-//require mysql and inquirer
+
 var mysql = require('mysql');
 var inquirer = require('inquirer');
-//create connection to db
+
 var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
@@ -11,11 +11,10 @@ var connection = mysql.createConnection({
 })
 
 function start(){
-//prints the items for sale and their details
+
 connection.query('SELECT * FROM Products', function(err, res){
   if(err) throw err;
 
-  console.log('_.~"~._.~"~._.~Welcome to BAMazon~._.~"~._.~"~._')
   console.log('----------------------------------------------------------------------------------------------------')
 
   for(var i = 0; i<res.length;i++){
@@ -39,7 +38,7 @@ connection.query('SELECT * FROM Products', function(err, res){
     },
     {
       type: "input",
-      name: "qty",
+      name: "quanity",
       message: "How much would you like to purchase?",
       validate: function(value){
         if(isNaN(value)){
@@ -54,15 +53,15 @@ connection.query('SELECT * FROM Products', function(err, res){
       var howMuchToBuy = parseInt(ans.qty);
       var grandTotal = parseFloat(((res[whatToBuy].Price)*howMuchToBuy).toFixed(2));
 
-      //check if quantity is sufficient
+      
       if(res[whatToBuy].StockQuantity >= howMuchToBuy){
-        //after purchase, updates quantity in Products
+      
         connection.query("UPDATE Products SET ? WHERE ?", [
         {StockQuantity: (res[whatToBuy].StockQuantity - howMuchToBuy)},
         {ItemID: ans.id}
         ], function(err, result){
             if(err) throw err;
-            console.log("Success! Your total is $" + grandTotal.toFixed(2) + ". Your item(s) will be shipped to you in 3-5 business days.");
+            console.log("Success! Your total is $" + grandTotal.toFixed(2) + ". Your item(s) will be shipped right away");
         });
 
         connection.query("SELECT * FROM Departments", function(err, deptRes){
@@ -74,18 +73,17 @@ connection.query('SELECT * FROM Products', function(err, res){
             }
           }
           
-          //updates totalSales in departments table
           connection.query("UPDATE Departments SET ? WHERE ?", [
           {TotalSales: deptRes[index].TotalSales + grandTotal},
           {DepartmentName: res[whatToBuy].DepartmentName}
           ], function(err, deptRes){
               if(err) throw err;
-              //console.log("Updated Dept Sales.");
+             
           });
         });
 
       } else{
-        console.log("Sorry, there's not enough in stock!");
+        console.log("Sorry, out of stock");
       }
 
       reprompt();
@@ -93,7 +91,6 @@ connection.query('SELECT * FROM Products', function(err, res){
 })
 }
 
-//asks if they would like to purchase another item
 function reprompt(){
   inquirer.prompt([{
     type: "confirm",
@@ -103,7 +100,7 @@ function reprompt(){
     if(ans.reply){
       start();
     } else{
-      console.log("See you soon!");
+      console.log("Come back again!");
     }
   });
 }
