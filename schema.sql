@@ -15,16 +15,17 @@ CREATE TABLE Products(
 select * from Products;
 
 INSERT INTO Products(ProductName,DepartmentName,Price,StockQuantity)
-VALUES ("Uncharted 4","ENTERTAINMENT",49.95,150),
-    ("DOOM","ENTERTAINMENT",59.99,200),
-    ("Crate of Spam","GROCERY",24.50,50),
-    ("Cool Shades","CLOTHING",75.00,5),
-    ("Worn Denim Jeans","CLOTHING",54.25,35),
-    ("Survival Towel","SPORTS & OUTDOORS",42.42,42),
-    ("Bill and Ted's Excellent Adventure","ENTERTAINMENT",15.00,25),
-    ("Mad Max: Fury Road","ENTERTAINMENT",25.50,57),
-    ("Monopoly","ENTERTAINMENT",30.50,35),
-    ("Yahtzee","ENTERTAINMENT",19.95,23);
+VALUES ("TV","ELECTRONICS",49.95,150),
+    ("DVD","ENTERTAINMENT",59.99,200),
+    ("Eggs","GROCERY",24.50,50),
+    ("Dress Shirt","CLOTHING",75.00,5),
+    ("Pants","CLOTHING",54.25,35),
+    ("Baseball  Glove","SPORTS & OUTDOORS",42.42,42),
+    ("CD","ENTERTAINMENT",15.00,25),
+    ("Book","ENTERTAINMENT",25.50,57),
+    ("STERO","ELECTRONICS",30.50,35),
+    ("POT","KITCHEN",19.95,23),
+    ("WOK", "KITCHEN", 23,44,8);
 
 CREATE TABLE Departments(
     DepartmentID MEDIUMINT AUTO_INCREMENT NOT NULL,
@@ -37,10 +38,8 @@ CREATE TABLE Departments(
 INSERT INTO Departments(DepartmentName, OverHeadCosts, TotalSales)
 VALUES ('ENTERTAINMENT', 50000.00, 15000.00),
     ('ELECTRONICS', 20000.00, 12000.00),
-    ('HOME', 30000.00, 15000.00),
-    ('BODY & HEALTH', 3000.00, 12000.00),
+    ('KITCHEN', 30000.00, 15000.00),
     ('GROCERY', 1200.00, 15000.00),
-    ('KIDS', 40000.00, 12000.00),
     ('CLOTHING', 35000.00, 15000.00),
     ('SPORTS & OUTDOORS', 12000.00, 12000.00);
 
