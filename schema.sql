@@ -25,7 +25,9 @@ VALUES ("TV","ELECTRONICS",49.95,150),
     ("Book","ENTERTAINMENT",25.50,57),
     ("STERO","ELECTRONICS",30.50,35),
     ("POT","KITCHEN",19.95,23),
+    ("MILK", "GROCERY", 13.44, 32),
     ("WOK", "KITCHEN", 23,44,8);
+
 
 CREATE TABLE Departments(
     DepartmentID MEDIUMINT AUTO_INCREMENT NOT NULL,
@@ -34,6 +36,7 @@ CREATE TABLE Departments(
     TotalSales DECIMAL(10,2) NOT NULL,
     PRIMARY KEY(DepartmentID)
     );
+
 
 INSERT INTO Departments(DepartmentName, OverHeadCosts, TotalSales)
 VALUES ('ENTERTAINMENT', 50000.00, 15000.00),
